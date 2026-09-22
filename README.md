@@ -57,9 +57,11 @@ Extends the captured dataset through simple data augmentation. It adds Gaussian 
 
 ### `LSTM_train.py`
 
-Trains an LSTM-based neural network for gesture classification. It loads gesture sequences saved as `.npy` files, represents each input sample as 90 frames × 69 values, and trains a multi-class softmax classifier.
+The previous training approach, included to show an earlier stage of model development. It uses two standard LSTM layers with 128 and 64 units, dropout, and L2 regularisation to classify the 12 gestures from sequences of 90 frames × 69 values.
 
-The model architecture contains an LSTM layer with 128 units, dropout, an LSTM layer with 64 units, a dense hidden layer, and a softmax output layer for the 12 gesture classes. The script uses dropout and L2 regularisation, then saves the trained model as an `.h5` file.
+### `LSTM_train_bilstm.py`
+
+A training script following the final (sixth) training configuration described in the article. It uses two bidirectional LSTM layers with 128 and 64 units, each followed by dropout of 0.5 and batch normalisation, then a Dense/ReLU layer and a 12-class softmax output. Training uses a stratified split, Adam, categorical cross-entropy, TensorBoard, `ReduceLROnPlateau`, and 50 epochs.
 
 ### `GestureRecognizer.py`
 
@@ -181,7 +183,7 @@ The exact configuration depends on the target Unity project and ROS 2 environmen
 
 Several scripts include machine-specific absolute paths. Update these values before running the project:
 
-- `DATA_PATH` in `Rokoko_capture_to_array.py` and `LSTM_train.py`;
+- `DATA_PATH` in `Rokoko_capture_to_array.py`, `LSTM_train.py`, and `LSTM_train_bilstm.py`;
 - input and output paths in `ExtendDatased.py`;
 - `model_path` in `GestureRecognizer.py`;
 - `pythonInterpreterPath` and `pythonScriptPath` in `RunPythonScript.cs`.
@@ -198,8 +200,8 @@ The following assets are required but are not included in this repository:
 1. Start Rokoko Studio and enable the UDP data stream.
 2. Run `Rokoko_capture_to_array.py` to record training sequences.
 3. Optionally run `ExtendDatased.py` to augment the dataset.
-4. Run `LSTM_train.py` to train and export the gesture-recognition model.
-5. Update `model_path` in `GestureRecognizer.py`.
+4. Run `LSTM_train.py` for the earlier experiment or `LSTM_train_bilstm.py` for the article-based BiLSTM architecture.
+5. Update `model_path` in `GestureRecognizer.py` to the model produced by the selected training script.
 6. Configure the Unity scene and assign required references in the Inspector.
 7. Configure ROS 2 packages and start the required ROS nodes.
 8. Run the Unity application and start the Python recogniser from Unity.
