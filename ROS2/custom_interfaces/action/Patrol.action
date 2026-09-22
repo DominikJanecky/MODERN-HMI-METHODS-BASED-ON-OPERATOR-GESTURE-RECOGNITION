@@ -1,3 +1,6 @@
+# Adapted from The Construct's ROS 2 patrol action-server tutorial:
+# https://www.theconstruct.ai/ros2-how-to-2-create-a-ros2-action-server/
+# Licensed under Apache License 2.0; see ROS2/example_interfaces/LICENSE.
 #Goal
 float32 radius
 ---

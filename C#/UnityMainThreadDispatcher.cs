@@ -1,3 +1,10 @@
+// Copyright 2015 Pim de Witte. All rights reserved.
+// Based on UnityMainThreadDispatcher by Pim de Witte and contributors:
+// https://github.com/PimDeWitte/UnityMainThreadDispatcher
+// Licensed under the Apache License, Version 2.0.
+// This file has been adapted for this Unity project.
+// See ROS2/example_interfaces/LICENSE for the full license text.
+
 using System;
 using System.Collections;
 using System.Collections.Generic;

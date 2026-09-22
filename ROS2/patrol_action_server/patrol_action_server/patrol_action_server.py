@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+# Copyright 2019 ROBOTIS CO., LTD.
+# Licensed under the Apache License, Version 2.0.
+# Authors: Ryan Shim, Gilbert
+# Adapted from the ROS 2 patrol action-server example published by The Construct:
+# https://www.theconstruct.ai/ros2-how-to-2-create-a-ros2-action-server/
+# See ROS2/example_interfaces/LICENSE for the full license text.
 import math
 import time
 
